@@ -1,0 +1,26 @@
+<div class="container mt-3" style="padding: 90px">
+
+  <h1> <%= @list.name %> Movies </h1>
+
+  <% @list.movies.each do |movie| %>
+
+    <div class="card" style="width: 24rem;">
+      <img src="<%= movie.poster_url %>" class="card-img-top" style="height: 160px" alt="...">
+      <div class="card-body">
+        <h5 class="card-title"><%= movie.title %></h5>
+        <p class="card-text"><%= movie.overview %></p>
+        
+        <% @list.bookmarks.each do |bookmark| %>
+          <p><%= bookmark.comment %></p>
+          <hr>
+        <% end %>
+
+        <a href="#" class="btn btn-primary">Delete Bookmark</a>
+      </div>
+    </div>
+  <% end %>
+
+<%= link_to  "Create a Bookmark", new_bookmark_path %>
+
+
+</div>

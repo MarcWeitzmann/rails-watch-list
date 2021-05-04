@@ -1,0 +1,80 @@
+
+
+
+<div class="container mt-3" style="padding: 90px">
+  
+  <div class="banner">
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">      
+        <%= image_tag "drama-small.jpg", alt: "Drama", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Drama</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "horror-small.jpg", alt: "Horror", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Horror</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "girl-small.jpg", alt: "Girl", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Girl</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "favorite-small.jpg", alt: "Favorite", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Alltime Favorites</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "fantasy-small.jpg", alt: "Fantasy", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Fantasy</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "documentation-small.jpg", alt: "Documentation", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Documentation</h1>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <%= image_tag "kid-small.jpg", alt: "Kids", class: "d-block w-100" %>
+        <div class="carousel-caption d-none d-md-block">
+          <h1>Kids</h1>
+        </div>
+      </div>
+    </div>
+    
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  </div>
+
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="col mt-3">
+        <div class="card" style="width: 18rem;">
+          <%= image_tag "drama-small.jpg", alt: "Drama" %>
+            <div class="card-body">
+              <h5 class="card-title"><%= list.name %></h5>
+              <p class="card-text">No. of movies: <%= list.movies.count %></p> 
+              <%= link_to 'Show Movies', list, class: "btn btn-primary" %>
+              <%= link_to 'Delete List', list, method: :delete, data: { confirm: 'Are you sure?' } %>
+            </div>
+        </div>
+      </div>    
+    <% end %>
+  </div>
+
+</div>
