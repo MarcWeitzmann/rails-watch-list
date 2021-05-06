@@ -1,19 +1,16 @@
-
-
-
 <div class="container mt-3" style="padding: 90px">
   
   <div class="banner">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item picture-small active">      
-          <%= image_tag "drama-small.jpg", alt: "Drama", class: "d-block w-100" %>
+          <%= cl_image_tag @lists.first.photo.key, alt: "List Picture", class: "d-block w-100" %>
           <div class="carousel-caption d-none d-md-block">
-            <h1>Drama</h1>
+            <h1><%= @lists.first.name %></h1>
           </div>
         </div>
 
-        <% @lists.each do |list| %>
+        <% @lists.drop(1).each do |list| %>
           <div class="carousel-item picture-small">
 
             <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
