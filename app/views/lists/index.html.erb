@@ -6,12 +6,14 @@
   <div class="banner">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
+    #looooop
       <div class="carousel-item active">      
         <%= image_tag "drama-small.jpg", alt: "Drama", class: "d-block w-100" %>
         <div class="carousel-caption d-none d-md-block">
           <h1>Drama</h1>
         </div>
       </div>
+      #each do
       <div class="carousel-item">
         <%= image_tag "horror-small.jpg", alt: "Horror", class: "d-block w-100" %>
         <div class="carousel-caption d-none d-md-block">
@@ -59,13 +61,16 @@
       <span class="sr-only">Next</span>
     </a>
   </div>
-  </div>
 
   <div class="row">
     <% @lists.each do |list| %>
       <div class="col mt-3">
         <div class="card" style="width: 18rem;">
-          <%= image_tag "drama-small.jpg", alt: "Drama" %>
+
+          <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+          </div>
+
+          <%#= cl_image_tag list.photo.key, alt: "List Picture" %>
             <div class="card-body">
               <h5 class="card-title"><%= list.name %></h5>
               <p class="card-text">No. of movies: <%= list.movies.count %></p> 
