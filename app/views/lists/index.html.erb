@@ -5,7 +5,7 @@
       <div class="carousel-inner">
         <div class="carousel-item picture-small active">
 
-          <% if @lists.first.photo.attached? %>
+          <% if @lists.first.present? && @lists.first.photo.attached? %>
             <%= cl_image_tag @lists.first.photo.key, alt: "List Picture", class: "d-block w-100" %>
           <% else %>
             <%= image_tag "girl.jpg", alt: "List Picture", class: "d-block w-100" %>
@@ -28,15 +28,17 @@
                 </div>
             <% end %>
 
-              <div class="carousel-caption d-none d-md-block">
-                <h1><%= list.name %></h1>
-              </div>
+            <div class="carousel-caption d-none d-md-block">
+              <h1><%= list.name %></h1>
+            </div>
 
           </div>
         <% end %>
 
       </div>
+
     </div>
+    
   </div>
 
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -55,14 +57,13 @@
       <div class="col mt-3">
         <div class="card" style="width: 18rem;">
 
-        <% if @lists.first.photo.attached? %>
-          <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
-          </div>
-
-        <% else %>
+          <% if @lists.first.present? && @lists.first.photo.attached? %>
+            <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            </div>
+          <% else %>
             <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= image_path "girl.jpg", height: 300, crop: :fill %>')">
             </div>
-        <% end %>
+          <% end %>
 
             <div class="card-body">
               <h5 class="card-title"><%= list.name %></h5>
