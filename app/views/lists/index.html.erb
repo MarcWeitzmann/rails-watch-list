@@ -5,62 +5,43 @@
   
   <div class="banner">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-    <div class="carousel-inner">
-    #looooop
-      <div class="carousel-item active">      
-        <%= image_tag "drama-small.jpg", alt: "Drama", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Drama</h1>
+      <div class="carousel-inner">
+        <div class="carousel-item picture-small active">      
+          <%= image_tag "drama-small.jpg", alt: "Drama", class: "d-block w-100" %>
+          <div class="carousel-caption d-none d-md-block">
+            <h1>Drama</h1>
+          </div>
         </div>
-      </div>
-      #each do
-      <div class="carousel-item">
-        <%= image_tag "horror-small.jpg", alt: "Horror", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Horror</h1>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "girl-small.jpg", alt: "Girl", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Girl</h1>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "favorite-small.jpg", alt: "Favorite", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Alltime Favorites</h1>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "fantasy-small.jpg", alt: "Fantasy", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Fantasy</h1>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "documentation-small.jpg", alt: "Documentation", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Documentation</h1>
-        </div>
-      </div>
-      <div class="carousel-item">
-        <%= image_tag "kid-small.jpg", alt: "Kids", class: "d-block w-100" %>
-        <div class="carousel-caption d-none d-md-block">
-          <h1>Kids</h1>
-        </div>
+
+        <% @lists.each do |list| %>
+          <div class="carousel-item picture-small">
+
+            <div class="image-size" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path list.photo.key, height: 300, crop: :fill %>')">
+            </div>
+
+              <%#= cl_image_tag list.photo.key, alt: "List Picture" %>
+              
+              <div class="carousel-caption d-none d-md-block">
+                <h1><%= list.name %></h1>
+              </div>
+
+          </div>
+        <% end %>
+
       </div>
     </div>
-    
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  </div>
+
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  </a>
+    
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="sr-only">Next</span>
-    </a>
-  </div>
+  </a>
+
 
   <div class="row">
     <% @lists.each do |list| %>
@@ -81,5 +62,4 @@
       </div>    
     <% end %>
   </div>
-
 </div>
